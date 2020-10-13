@@ -88,11 +88,14 @@ console.log(newArray[4]()); // should return 50
 
 // 8
 function sum(... numbers) {
-	let result = 0;
-	numbers.forEach(function(number) {
-		result += number;
-	});
-	return result;
+	function recursion(numbers) {
+		if (numbers.length === 1) {
+			return numbers[0];
+		} else {
+			return numbers[0] + recursion(numbers.slice(1, numbers.length));
+		}
+	}
+	return recursion(numbers);
 }
 
 console.log(sum(1,3,5,7));
