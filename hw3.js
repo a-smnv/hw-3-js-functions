@@ -115,4 +115,13 @@ function countDown(startPoint) {
 countDown(3);
 
 // 10
-// Not implemented yet!
+Function.prototype.myBind = function(context, ... args) {
+	let object = this;
+	return function(... args) {
+		return object.apply(context, args);
+    };
+}
+
+function addPropToNumber(number) { return this.prop + number; }
+let bound = addPropToNumber.myBind({ prop: 9 });
+console.log(bound(1)); // 10
